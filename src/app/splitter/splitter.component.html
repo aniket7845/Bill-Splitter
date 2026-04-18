@@ -1,0 +1,50 @@
+<div class="app-container">
+
+  <div class="card main-card">
+    <h2>💸 Bill Splitter</h2>
+
+    <textarea 
+      [(ngModel)]="inputText"
+      placeholder="Example: Aniket paid 500, Rahul paid 300, Aman paid 0">
+    </textarea>
+
+    <button (click)="calculate()" class="primary-btn">
+      Split Now
+    </button>
+
+    <div class="summary" *ngIf="results.length">
+      <p><b>Total:</b> ₹{{ total }}</p>
+      <p><b>Each Pays:</b> ₹{{ share }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="results.length" class="results">
+    <div class="result-card" *ngFor="let r of results">
+
+  <div class="user from-user">
+    <div class="avatar" [style.background]="getColor(r.from)">
+      {{ getInitial(r.from) }}
+    </div>
+    <span>{{ r.from }}</span>
+  </div>
+
+  <div class="center">
+    <span>pays</span>
+    <span class="amount">₹{{ r.amount }}</span>
+  </div>
+
+  <div class="user to-user">
+    <div class="avatar" [style.background]="getColor(r.to)">
+      {{ getInitial(r.to) }}
+    </div>
+    <span>{{ r.to }}</span>
+  </div>
+
+  <button class="upi-btn" (click)="pay(r)">Pay</button>
+
+</div>
+  </div>
+<div class="empty" *ngIf="!results.length">
+  <p>💡 Enter expenses to split the bill</p>
+</div>
+</div>

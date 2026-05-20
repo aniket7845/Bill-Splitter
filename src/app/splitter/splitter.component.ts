@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router"; 
 
 interface Person {
   name: string;
@@ -16,7 +17,7 @@ interface Transaction {
 @Component({
   selector: 'app-splitter',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './splitter.component.html',
   styleUrl: './splitter.component.scss'
 })
